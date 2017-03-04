@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 
 import jxl.Cell;
 import jxl.Sheet;
@@ -44,6 +45,9 @@ class ParseFile{
 				}
 			}
 		}catch (BiffException e){
+			System.out.println("Invalid excel file provided!!!");
+			System.out.println("Please make sure that first argument is full qualified excel file path");
+			System.out.println("Also make sure that file is in .xls format i.e. 2003 excel format");
 			e.printStackTrace();
 		}
 		return arr;
@@ -72,6 +76,16 @@ public class CSV_CONV{
 			System.out.println("2. Second should be the output file location without the actual file name");
 			return;		
 		}
+		//CHECKING FOR VALIDITY OF PATHS PROVIDED FOR 2 FILES
+		if(!(new File(args[0]).exists())||(new File(args[0]).isDirectory())){
+			System.out.println("Excel file provided does not exsist!!!!");
+			return;
+		}
+		if(!(new File(args[1]).exists()&&new File(args[1]).isDirectory())){
+			System.out.println("Location of output file provided does not exsist!!!!");
+			return;
+		}
+
 		parser=new ParseFile();
 		System.out.println("Name of the excel file is:"+args[0]);
 		System.out.println("Location of the output vcf file is:"+args[1]);
