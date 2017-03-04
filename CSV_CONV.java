@@ -58,6 +58,7 @@ class ParseFile{
 class VCFcreate{
 	private String location;
 	private String outputFile;
+	private String name;
 
 	public void setLocation(String location){
 		this.location=location;
@@ -75,7 +76,19 @@ class VCFcreate{
 		//CREATING THE OUTPUT FILE
 		try{    
 			FileWriter fw=new FileWriter(outputFile);    
-			fw.write("Test writing.");    
+			//fw.write("Test writing.");    
+			for(i=0;i<data.length;i++){
+				fw.write("BEGIN:VCARD\n");
+				fw.write("VERSION:2.1\n");
+				name=data[1][i];
+				fw.write("N:;"+name+";;;\n");
+				fw.write("FN:"+name+"\n");
+				fw.write("TEL;CELL:"+data[4][i]+"\n");
+				fw.write("EMAIL;HOME:"+data[5][i]+"\n");
+				fw.write("ORG:"+data[2][i]+"\n");
+				fw.write("TITLE:"+data[0][i]+"\n");
+				fw.write("END:VCARD\n");
+			}			
 			fw.close();    
 		}catch(Exception e){
 			System.out.println("Some internal error encountered!!!!UN-SUCCESSFUL");
