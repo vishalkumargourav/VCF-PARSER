@@ -46,7 +46,9 @@ class ParseFile{
 
 public class CSV_CONV{
 	public static void main(String[] args){
-		//FIRST ARGUMENT SHOUD BE THE EXCEL SHEET FILE NAME	
+		//FIRST ARGUMENT SHOUD BE THE EXCEL SHEET FILE NAME AND THE SECOND SHOULD BE THE
+		//OUTPUT FILE NAME
+	
 		if(args.length!=2){
 			System.out.println("The number of command line arguments should be exactly 2.");
 			System.out.println("1. First should be the name of excel file");
