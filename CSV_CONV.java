@@ -14,6 +14,11 @@ import jxl.read.biff.BiffException;
 	HOW TO RUN 	:
 		$javac -cp "/home/user/Desktop/vcf/jxl-2.4.2.jar" CSV_CONV.java
 		"/home/user/Desktop/vcf/vcf/jxl-2.6.jar" it is the location of jxl jar file
+	HOW TO SET CLASSPATH:	
+		export CLASSPATH=/home/user/Desktop/vcf/vcf/jxl-2.4.2.jar/:$CLASSPATH
+	NOTE		:
+		1. THIS PROGRAM WOULD ONLY WORK FOR windows 2003-07 .xls format excel workbook
+		
 */
 class ParseFile{
 	private String excelFile;
@@ -61,5 +66,18 @@ public class CSV_CONV{
 		System.out.println("Name of the output vcf file is:"+args[1]);
 		parser.setFile(args[0]);
 		data=parser.parse();
+		System.out.println("Number of rows in data is:"+data.length);
+		System.out.println("Number of columns in data is:"+data[0].length);
+		for(int i=0;i<data.length;i++){
+			for(int j=0;j<data[0].length;j++){
+				if(data[i][j]==""||data[i][j]==" ")
+					data[i][j]="NA";
+			}
+		}	
+		for(int i=0;i<data.length;i++){
+			for(int j=0;j<data[0].length;j++)
+				System.out.print(data[i][j]+"\t");
+			System.out.println(" ");
+		}
 	}
 }
