@@ -73,11 +73,14 @@ public class CSV_CONV{
 				if(data[i][j]==""||data[i][j]==" ")
 					data[i][j]="NA";
 			}
-		}	
+		}
+		/*
+		System.out.println("The data is...");	
 		for(int i=0;i<data.length;i++){
 			for(int j=0;j<data[0].length;j++)
 				System.out.print(data[i][j]+"\t");
 			System.out.println(" ");
 		}
+		*/
 	}
 }
