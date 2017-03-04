@@ -79,7 +79,7 @@ class VCFcreate{
 		try{    
 			FileWriter fw=new FileWriter(outputFile);    
 			//fw.write("Test writing.");    
-			for(i=0;i<data.length;i++){
+			for(i=1;i<data.length;i++){
 				fw.write("BEGIN:VCARD\n");
 				fw.write("VERSION:2.1\n");
 				name=data[1][i];
