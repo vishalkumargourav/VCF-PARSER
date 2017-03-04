@@ -59,6 +59,8 @@ class VCFcreate{
 	private String location;
 	private String outputFile;
 	private String name;
+	private String numbers;
+	private String[] no;
 
 	public void setLocation(String location){
 		this.location=location;
@@ -83,7 +85,12 @@ class VCFcreate{
 				name=data[1][i];
 				fw.write("N:;"+name+";;;\n");
 				fw.write("FN:"+name+"\n");
-				fw.write("TEL;CELL:"+data[4][i]+"\n");
+				numbers=data[4][i];				
+				no=numbers.replaceAll("^[,\\s]+", "").split("[,\\s]+");	
+				for(String n:no){			
+					if(data[6][i]!="NA")
+						fw.write("TEL;CELL:"+data[6][i]+" "+n+"\n");
+				}
 				fw.write("EMAIL;HOME:"+data[5][i]+"\n");
 				fw.write("ORG:"+data[2][i]+"\n");
 				fw.write("TITLE:"+data[0][i]+"\n");
