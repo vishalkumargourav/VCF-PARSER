@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.io.FileWriter;  
 
 import jxl.Cell;
 import jxl.Sheet;
@@ -69,7 +70,18 @@ class VCFcreate{
 		}
 		outputFile=location+"/output"+i+".vcf";
 		System.out.println("Name of output file is:"+outputFile);
-		i=0;		
+		i=0;	
+		
+		//CREATING THE OUTPUT FILE
+		try{    
+			FileWriter fw=new FileWriter(outputFile);    
+			fw.write("Test writing.");    
+			fw.close();    
+		}catch(Exception e){
+			System.out.println("Some internal error encountered!!!!UN-SUCCESSFUL");
+			System.out.println(e);
+		}    
+		System.out.println("Success...");
 	}
 }
 
