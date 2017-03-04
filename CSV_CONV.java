@@ -54,13 +54,22 @@ class ParseFile{
 	}
 }
 
-class VCFCreater{
+class VCFcreate{
+	private String location;
 	private String outputFile;
-	public void setOutputFile(String outputFile){
-		this.outputFile=outputFile;
+
+	public void setLocation(String location){
+		this.location=location;
 	}
 	public void createVCFFile(String[][] data){
-		
+		int i;
+		for(i=0;i<1000000;i++){
+			if(!(new File(location+"/output"+i+".vcf").exists()))
+				break;
+		}
+		outputFile=location+"/output"+i+".vcf";
+		System.out.println("Name of output file is:"+outputFile);
+		i=0;		
 	}
 }
 
@@ -68,6 +77,8 @@ public class CSV_CONV{
 	public static void main(String[] args) throws IOException{
 		String[][] data;
 		ParseFile parser;
+		VCFcreate vCreate;		
+	
 		//FIRST ARGUMENT SHOUD BE THE EXCEL SHEET FILE NAME AND THE SECOND SHOULD BE THE
 		//OUTPUT FILE LOCATION WITHOUT THE ACTUAL OUTPUT FILE NAME
 		if(args.length!=2){
@@ -107,5 +118,9 @@ public class CSV_CONV{
 			System.out.println(" ");
 		}
 		*/
+		
+		vCreate=new VCFcreate();
+		vCreate.setLocation(args[1]);
+		vCreate.createVCFFile(data);
 	}
 }
