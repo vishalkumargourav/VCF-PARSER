@@ -13,7 +13,7 @@ import jxl.read.biff.BiffException;
 	DATE		:	04-03-2017
 	HOW TO RUN 	:
 		$javac -cp "/home/user/Desktop/vcf/jxl-2.6.jar" CSV_CONV.java
-		"/home/user/Desktop/vcf/jxl-2.6.jar" it is the location of jxl jar file
+		"/home/user/Desktop/vcf/vcf/jxl-2.6.jar" it is the location of jxl jar file
 */
 class ParseFile{
 	private String excelFile;
@@ -46,7 +46,14 @@ class ParseFile{
 
 public class CSV_CONV{
 	public static void main(String[] args){
-		//FIRST ARGUMENT SHOUD BE THE EXCEL SHEET FILE NAME
-		
+		//FIRST ARGUMENT SHOUD BE THE EXCEL SHEET FILE NAME	
+		if(args.length!=2){
+			System.out.println("The number of command line arguments should be exactly 2.");
+			System.out.println("1. First should be the name of excel file");
+			System.out.println("2. Second should be the full qualified name of output file");
+			return;		
+		}
+		System.out.println("Name of the excel file is:"+args[0]);
+		System.out.println("Name of the output vcf file is:"+args[1]);
 	}
 }
